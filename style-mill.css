@@ -332,6 +332,15 @@ body.skin-mill ul.pages li a::before { display: none; }
 body.skin-mill ul.pages li a:hover { color: var(--accent); animation: none; background: none; }
 body.skin-mill ul.pages .meta { display: block; border: none; color: var(--mid); }
 
+/* === SEARCH (Pagefind UI) — match the mill type === */
+body.skin-mill .pagefind-ui {
+  --pagefind-ui-primary: var(--accent);
+  --pagefind-ui-border: var(--rule);
+  --pagefind-ui-font: "Space Grotesk", system-ui, sans-serif;
+}
+body.skin-mill .pagefind-ui .pagefind-ui__result-title { font-family: "Space Grotesk", system-ui, sans-serif; }
+body.skin-mill .pagefind-ui .pagefind-ui__result-excerpt { font-family: "Roboto Slab", Georgia, serif; }
+
 /* === FOOTER === */
 body.skin-mill footer {
   font-family: "Space Grotesk", system-ui, sans-serif;
