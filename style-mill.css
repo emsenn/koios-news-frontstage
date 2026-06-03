@@ -1,0 +1,224 @@
+/* style-mill.css — Koios.News "mill" skin.
+   A brutalist-news overlay on the emsalpha theme: loud where the base is scarce.
+   It recolors through the base's CSS-variable system, swaps in the 561 design
+   bible's type stack (Space Grotesk display + Roboto Slab body), and applies
+   the bible's "type-as-mass" discipline (sort the page by size; tight leading at
+   display). Everything is scoped under body.skin-mill, so the default skin is
+   untouched. */
+
+/* === PALETTE: ink, newsprint, one scream === */
+body.skin-mill {
+  --text: #141414;
+  --bg: #faf8f3;
+  --surface: #ffffff;
+  --mid: #57534e;
+  --mid-light: rgba(20,20,20,0.06);
+  --mid-faint: rgba(20,20,20,0.035);
+  --mid-border: #141414;
+  --mid-sel: #ffe08a;
+  --mid-table: #141414;
+  --visited: #7a1010;
+  --accent: #cc1b1b;
+  --rule: #141414;
+}
+@media (prefers-color-scheme: dark) {
+  body.skin-mill {
+    --text: #ececea;
+    --bg: #121110;
+    --surface: #1b1a18;
+    --mid: #a8a39c;
+    --mid-light: rgba(255,255,255,0.07);
+    --mid-faint: rgba(255,255,255,0.04);
+    --mid-border: #ececea;
+    --mid-sel: #6b5a00;
+    --mid-table: #ececea;
+    --visited: #f08a8a;
+    --accent: #ff4d4d;
+    --rule: #ececea;
+  }
+}
+
+/* === BODY: wider column, slab body, no drift === */
+body.skin-mill {
+  max-width: 60rem;
+  font-family: "Roboto Slab", Georgia, serif;
+  letter-spacing: 0;
+  word-spacing: 0;
+}
+body.skin-mill main { animation: none; line-height: 1.5; }
+
+/* === MASTHEAD: loud wordmark, thick rule === */
+body.skin-mill .site-header {
+  border-bottom: 4px solid var(--text);
+  padding: 0.6em 0 0.5em;
+  margin-bottom: 1.2em;
+}
+body.skin-mill .site-title {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 2.7em;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+body.skin-mill .site-tagline {
+  display: block;
+  margin: 0.35em 0 0;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 0.7em;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+}
+body.skin-mill .site-header nav {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  margin-top: 0.7em;
+  font-size: 0.72em;
+  font-weight: 500;
+}
+
+/* === HEADINGS: type-as-mass, tight display leading === */
+body.skin-mill h1, body.skin-mill h2, body.skin-mill h3,
+body.skin-mill h4, body.skin-mill h5, body.skin-mill h6 {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+body.skin-mill h1 { font-size: 2.7em; line-height: 1.0; margin: 0 0 0.2em; }
+body.skin-mill h2 {
+  font-size: 1.45em;
+  margin-top: 1.5em;
+  padding-top: 0.45em;
+  border-top: 2px solid var(--rule);
+}
+body.skin-mill h3 { font-size: 1.12em; }
+
+/* === ARTICLE: hard red spine === */
+body.skin-mill article.h-entry {
+  border-left: 6px solid var(--accent);
+  padding: 1.6em 1.9em 1.4em;
+}
+
+/* === META / KICKER === */
+body.skin-mill .meta {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 0.72em;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  border-bottom: 2px solid var(--rule);
+}
+body.skin-mill .meta .p-summary {
+  font-family: "Roboto Slab", Georgia, serif;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--mid);
+  font-size: 1.2em;
+  line-height: 1.4;
+}
+
+/* === NEWS FEED (home) === */
+body.skin-mill .post-feed { list-style: none; padding: 0; margin: 0; }
+body.skin-mill .post-feed__item {
+  padding: 1.1em 0;
+  border-bottom: 2px solid var(--rule);
+}
+body.skin-mill .post-feed__item:first-child { border-top: 2px solid var(--rule); }
+body.skin-mill .post-feed__kicker {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 0.72em;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin-bottom: 0.25em;
+}
+body.skin-mill a.post-feed__headline {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.7em;
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  background: none;
+}
+body.skin-mill a.post-feed__headline::before { display: none; }
+body.skin-mill a.post-feed__headline:hover { color: var(--accent); animation: none; background: none; }
+body.skin-mill .post-feed__summary {
+  margin: 0.45em 0 0;
+  font-family: "Roboto Slab", Georgia, serif;
+  font-size: 0.95em;
+  color: var(--mid);
+  line-height: 1.45;
+}
+
+/* === SECTION LIST (/posts/) — ul.pages made newsy === */
+body.skin-mill ul.pages li {
+  padding: 0.85em 0;
+  border-bottom: 2px solid var(--rule);
+}
+body.skin-mill ul.pages li a {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.35em;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  background: none;
+}
+body.skin-mill ul.pages li a::before { display: none; }
+body.skin-mill ul.pages li a:hover { color: var(--accent); animation: none; background: none; }
+body.skin-mill ul.pages .meta {
+  display: block;
+  border: none;
+  color: var(--mid);
+}
+
+/* === PROSE LINKS: hard underline, red === */
+body.skin-mill main p a, body.skin-mill main li a {
+  color: var(--accent);
+  background: none;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+body.skin-mill main p a::before, body.skin-mill main li a::before { display: none; }
+body.skin-mill main p a:hover, body.skin-mill main li a:hover { animation: none; background: none; }
+
+/* === TAGS: square, hard border === */
+body.skin-mill .tags a {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  text-transform: uppercase;
+  font-size: 0.7em;
+  letter-spacing: 0.06em;
+  border: 1.5px solid var(--text);
+  border-radius: 0;
+  background: none;
+  color: var(--text);
+}
+
+/* === BLOCKQUOTE: heavy red bar === */
+body.skin-mill blockquote {
+  border-left: 6px solid var(--accent);
+  background: var(--mid-faint);
+  font-family: "Roboto Slab", Georgia, serif;
+}
+
+/* === FOOTER === */
+body.skin-mill footer {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  border-top: 4px solid var(--text);
+}
+body.skin-mill footer .footer-closing,
+body.skin-mill footer .footer-license,
+body.skin-mill footer .footer-meta {
+  font-family: "Roboto Slab", Georgia, serif;
+}
+
+/* === MOBILE === */
+@media (max-width: 512px) {
+  body.skin-mill .site-title { font-size: 2em; }
+  body.skin-mill h1 { font-size: 2em; }
+  body.skin-mill a.post-feed__headline { font-size: 1.4em; }
+}
